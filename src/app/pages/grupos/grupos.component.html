@@ -1,0 +1,30 @@
+<div class="row animated fadeIn">
+
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="container ">
+                    <h2>Grupos</h2>
+                    <ul class="list-group">
+                        <input placeholder="Buscar grupos ...." [(ngModel)]="dataSearch" type="text" name="" id="" class="form-control">
+                        <li class="list-group-item active">Grupos</li>
+
+                        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                            <div class="example-box" *ngFor="let grupo of grupos" cdkDrag>{{grupo.name}}</div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="container m-4">
+                    <h2>Detalle del grupo</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
