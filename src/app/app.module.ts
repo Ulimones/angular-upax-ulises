@@ -18,8 +18,11 @@ import { Error404Component } from './pages/error404/error404.component';
 import { EmpleadosService } from './services/empleados.service';
 import { GruposService } from './services/grupos.service';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { NgDragDropModule } from 'ng-drag-drop';
  
 import { DatePipe } from '@angular/common';
+import { BusquedaPipe } from './pipes/busqueda.pipe';
+import { FechaService } from './services/fecha.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { DatePipe } from '@angular/common';
     GruposComponent,
     NavbarComponent,
     Error404Component,
+    BusquedaPipe,
 
   ],
   imports: [
@@ -41,11 +45,11 @@ import { DatePipe } from '@angular/common';
     MatInputModule,
     FormsModule,
     NgxDatatableModule,
-    DragDropModule
- 
-
+    DragDropModule,
+    NgDragDropModule,
+    NgDragDropModule.forRoot()
   ],
-  providers: [EmpleadosService,GruposService,DatePipe],
+  providers: [EmpleadosService,GruposService, FechaService, DatePipe, BusquedaPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

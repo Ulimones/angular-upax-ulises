@@ -6,12 +6,10 @@
                 <div class="container ">
                     <h2>Grupos</h2>
                     <ul class="list-group">
-                        <input placeholder="Buscar grupos ...." [(ngModel)]="dataSearch" type="text" name="" id="" class="form-control">
-                        <li class="list-group-item active">Grupos</li>
-
-                        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-                            <div class="example-box" *ngFor="let grupo of grupos" cdkDrag>{{grupo.name}}</div>
-                        </div>
+                        <li class="list-group-item active">
+                            <input placeholder="Search" [(ngModel)]="dataSearch" type="text" name="" id="" class="form-control">
+                        </li>
+                        <li draggable [dragData]="grupo" class="list-group-item" *ngFor="let grupo of grupos|busquedaPipe:  dataSearch">{{grupo.name}}</li>
                     </ul>
                 </div>
             </div>
@@ -21,7 +19,30 @@
         <div class="card">
             <div class="card-body">
                 <div class="container m-4">
-                    <h2>Detalle del grupo</h2>
+                    <h2>Detalle empleados</h2>
+                    <ul class="list-group group-detail" droppable (onDrop)="onDrop($event)">
+                        <li class="list-group-item active description fixed navbar-fixed-top">
+                            <div *ngIf="this.empleados.length > 0">
+                                <input type="checkbox" name="" id="" (change)="seleccionarTodos()" checked>
+                                <span class="text-light">  {{nombreGrupoAgregado}} </span>
+                                <button class="btn btn-outline-light" (click)="eliminarGrupos()">
+                                Eliminar
+                                </button>
+                            </div>
+                        </li>
+                        <li class="list-group-item" *ngFor="let empleado of empleados">
+                            <input type="checkbox" name="" id="" [(ngModel)]="empleado.selected">
+                            <span class="text-dark"> {{' '+empleado.name}}</span>
+                        </li>
+
+                    </ul>
+                    <div class="col-12 text-right">
+                        <br>
+                        <button *ngIf="this.empleados && this.empleados.length >= 0" class="btn btn-info" (click)="MostrarSeleccionados()">
+                            Continuar 
+                          
+                          </button>
+                    </div>
 
                 </div>
             </div>

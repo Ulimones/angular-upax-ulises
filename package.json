@@ -23,6 +23,7 @@
     "@angular/router": "~10.0.2",
     "@swimlane/ngx-datatable": "^17.1.0",
     "bootswatch": "^4.5.1",
+    "ng-drag-drop": "^5.0.0",
     "rxjs": "~6.5.5",
     "sweetalert2": "^9.17.1",
     "tslib": "^2.0.0",
